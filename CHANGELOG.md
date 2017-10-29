@@ -1,5 +1,10 @@
 ## Changelog
 
+## 1.0.9.1
+ * Whoops forgot SpaceLaunch.py & EveStatusCREST.py in my last update
+ * SpaceLaunch.py pulls data from the API at launchlibrary.net
+ * EveStatusCREST gives the users online for the Known Bad Game EVE Online
+
 ## 1.0.9
 Added in my own code since the main bot is no longer actively maintained.
  * agdq.py - Works for both AGDQ and SGDQ events, polls the current game, upcoming games and has a basic search. Was one of the first scripts I really wrote out so it's probably terrible.
