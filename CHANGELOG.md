@@ -1,7 +1,15 @@
 ## Changelog
 
 ## 1.0.9
-TBA
+Added in my own code since the main bot is no longer actively maintained.
+ * agdq.py - Works for both AGDQ and SGDQ events, polls the current game, upcoming games and has a basic search. Was one of the first scripts I really wrote out so it's probably terrible.
+ * NewComic.py - This has been ported from one bot to another then another, I finally rewrote it somewhat (cleaned up variable names) and added in some more features like drop shadows on text and random backgrounds/characters.
+ * runescape.py - Polls for full player count from the runescape server, I might look into trying to parse each type of player (new/old RS) apart
+ * tag.py - Add tags to keywords, can call up a keyword by .tags word or ?word
+ * tfw.py - Scrapes channels for any use of "tfw" and then grabs the sentence and stores it for later recallying with .tfw
+ * Title.py - Gets the title of webpages except those marked in the source to skip over, as other plugins generally handle those.
+
+ * CORE CHANGE: Added a blacklist feature, currently dependant on botcontrol flag on a user. This includes cloudbot/blacklist.py and also plugins/blacklist_pl.py; you can add both nicks and addresses to the database and check against both in a function.
 
 ### 1.0.8
 This update is pretty big. Be warned.
