@@ -9,7 +9,7 @@ from cloudbot.util import web, formatting, colors
 SEARCH_URL = "http://www.amazon.{}/s/"
 REGION = "com"
 
-AMAZON_RE = re.compile(""".*ama?zo?n\.(com|co\.uk|com\.au|de|fr|ca|cn|es|it)/.*/(?:exec/obidos/ASIN/|o/|gp/product/|
+AMAZON_RE = re.compile(""".*ama?zo?n\.(com|co\.uk|com\.au|de|fr|ca|cn|es|it|in)/.*/(?:exec/obidos/ASIN/|o/|gp/product/|
 (?:(?:[^"\'/]*)/)?dp/|)(B[A-Z0-9]{9})""", re.I)
 
 # Feel free to set this to None or change it to your own ID.
@@ -74,7 +74,12 @@ def amazon(text, _parsed=False):
                  r"|Spedizione gratuita)", item.text, re.I):
         tags.append("$(b)Free Shipping$(b)")
 
-    price = item.find('span', {'class': ['s-price', 'a-color-price']}).text
+    try:
+        price = item.find('span', {'class': ['s-price', 'a-color-price']}).text
+    except AttributeError:
+        for i in item.find_all('sup', {'class': 'sx-price-fractional'}):
+            i.string.replace_with('.' + i.string)
+        price = item.find('span', {'class': 'sx-price'}).text
 
     # use a whole lot of BS4 and regex to get the ratings
     try:
